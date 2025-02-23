@@ -2,7 +2,7 @@
 import useColorMode from "@/hooks/useColorMode";
 import { Moon, Sun } from "lucide-react";
 
-export default function Header() {
+export default function HeaderDashboard() {
   const [colorMode, setColorMode] = useColorMode();
   const date = new Date().getHours();
   const hello =
@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <>
       <header>
-        <h2 className="flex m-6 gap-3 font-semibold text-[#FFCE04]">
+        <h2 className="flex mt-28  gap-3 font-semibold text-[#FFCE04]">
           <span className="text-5xl font-bold">{hello}</span>
           <div className="flex text-5xl">
             <span className="flex font-bold">☕The News Dashboard</span>

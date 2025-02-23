@@ -1,66 +1,57 @@
-import { AreaMetricChart } from "@/components/AreaMetricChart";
-import { BarMetricChart } from "@/components/BarMetricChart";
-import { DatePicker } from "@/components/DatePicker";
-import { MetricChart } from "@/components/MetricChart";
-import { PieMetricChart } from "@/components/PieMetricChart";
+"use client";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import useColorMode from "@/hooks/useColorMode";
+import { Moon, Sun } from "lucide-react";
 
 export default function Home() {
+  const [colorMode, setColorMode] = useColorMode();
   return (
-    <div className="container mx-auto px-4 py-6">
-      {/* Filter section */}
-      <section className="flex items-center gap-4 mb-8">
-        <div className="flex flex-col gap-2">
-          <span className="text-sm font-semibold text-theNewsYellow">
-            Período:
-          </span>
-          <DatePicker />
-        </div>
-        <Button className="bg-theNewsYellow hover:bg-[#e6b700] self-end">
-          Ok
-        </Button>
-      </section>
-
-      <Separator className="mb-8" />
-
-      {/* Charts section */}
-      <section className="space-y-12">
-        {/* Cliques */}
-        <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
-            Métricas <span className="text-3xl">👇</span>
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <MetricChart title="Cliques" value={200} />
-            <MetricChart title="Usuários" value={90} />
-            <MetricChart title="Newsletters" value={11} />
-          </div>
-        </div>
-
-        {/* Campanhas */}
-        <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
-            Campanhas <span className="text-3xl">📢</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <PieMetricChart title="teste" data={[]} />
-            <PieMetricChart title="teste" data={[]} />
-            <PieMetricChart title="teste" data={[]} />
-            <BarMetricChart />
-          </div>
-        </div>
-
-        {/* Newsletters */}
-        <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
-            Newsletters <span className="text-3xl">📰</span>
-          </h2>
-          <div className="grid gap-6">
-            <AreaMetricChart />
-          </div>
-        </div>
-      </section>
-    </div>
+    <>
+      <div className="flex justify-center container mt-28">
+        <Card className="p-11 flex flex-col mt-20">
+          <CardTitle className="flex justify-center font-bold text-center mb-10 text-2xl">
+            ☕ Login
+            <div className="flex ml-4 items-center justify-center mt-2 hover:cursor-pointer text-theNewsYellow rounded-full hover:text-[#e6b700]">
+              {colorMode === "light" ? (
+                <Moon
+                  onClick={() => {
+                    if (typeof setColorMode === "function")
+                      setColorMode(colorMode === "light" ? "dark" : "light");
+                  }}
+                />
+              ) : (
+                <Sun
+                  onClick={() => {
+                    if (typeof setColorMode === "function")
+                      setColorMode(colorMode === "light" ? "dark" : "light");
+                  }}
+                />
+              )}
+            </div>
+          </CardTitle>
+          <CardContent>
+            <span className="font-semibold text-sm ml-1 text-theNewsYellow">
+              Email
+            </span>
+            <div className="flex items-center gap-2">
+              <Input placeholder="thenewszeiro@email.com" />
+              <Button className="text-[10px] h-6 w-6 bg-theNewsYellow hover:bg-[#e6b700] ">
+                Ok
+              </Button>
+            </div>
+            <div className="hover: cursor-pointer text-sm text-center mt-4">
+              <span>
+                Ainda não é assinante?{" "}
+                <p className="hover:underline text-theNewsYellow hover:font-semibold">
+                  Clique Aqui!
+                </p>
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 }
