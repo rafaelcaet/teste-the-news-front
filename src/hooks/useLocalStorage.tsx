@@ -7,8 +7,17 @@ function useLocalStorage<T>(
   key: string,
   initialValue: T
 ): [T, (value: SetValue<T>) => void] {
-  // Estado inicial SEM verificar se já existe no localStorage
-  const [storedValue, setStoredValue] = useState<T>(initialValue);
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    if (typeof window === "undefined") return initialValue;
+
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error("Erro ao acessar localStorage:", error);
+      return initialValue;
+    }
+  });
 
   // Atualiza o localStorage sempre que o estado mudar
   useEffect(() => {
@@ -17,7 +26,6 @@ function useLocalStorage<T>(
     }
   }, [key, storedValue]);
 
-  // Define o valor e salva no localStorage imediatamente
   const setValue = (value: SetValue<T>) => {
     try {
       const valueToStore =
@@ -28,16 +36,9 @@ function useLocalStorage<T>(
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao definir localStorage:", error);
     }
   };
-
-  // Sobrescreve o localStorage no primeiro render
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(key, JSON.stringify(initialValue));
-    }
-  }, [key, initialValue]);
 
   return [storedValue, setValue];
 }
