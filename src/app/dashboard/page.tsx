@@ -1,8 +1,10 @@
+"use client";
 import { AreaMetricChart } from "@/components/AreaMetricChart";
 import { BarMetricChart } from "@/components/BarMetricChart";
 import { DatePicker } from "@/components/DatePicker";
 import Header from "@/components/Header";
-import { MetricChart } from "@/components/MetricChart";
+import { MetricTotalNewslettersChart } from "@/components/MetricTotalNewslettersChart";
+import { MetricTotalUsersChart } from "@/components/MetricTotalUsuarios";
 import { PieMetricChart } from "@/components/PieMetricChart";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -33,10 +35,10 @@ export default function Dashboard() {
           <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
             Métricas <span className="text-3xl">👇</span>
           </h2>
+          {/* <MetricChart /> */}
           <div className="grid md:grid-cols-3 gap-6">
-            <MetricChart title="Cliques" value={200} />
-            <MetricChart title="Usuários" value={90} />
-            <MetricChart title="Newsletters" value={11} />
+            <MetricTotalNewslettersChart />
+            <MetricTotalUsersChart />
           </div>
         </div>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import Header from "@/components/Header";
-import { MetricChart } from "@/components/MetricChart";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 
@@ -24,9 +23,7 @@ export default function Reward() {
               Métricas <span className="text-3xl">👇</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <MetricChart title="Cliques" value={200} />
-              <MetricChart title="Usuários" value={90} />
-              <MetricChart title="Newsletters" value={11} />
+              {/* <MetricTotalQuantidadeChart /> */}
             </div>
           </div>
         </section>
