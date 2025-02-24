@@ -1,11 +1,10 @@
 "use client";
 import { AreaMetricChart } from "@/components/AreaMetricChart";
-import { BarMetricChart } from "@/components/BarMetricChart";
 import { DatePicker } from "@/components/DatePicker";
 import Header from "@/components/Header";
 import { MetricTotalNewslettersChart } from "@/components/MetricTotalNewslettersChart";
 import { MetricTotalUsersChart } from "@/components/MetricTotalUsuarios";
-import { PieMetricChart } from "@/components/PieMetricChart";
+import { BarUTMCampaign } from "@/components/BarUTMCampaign";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
@@ -36,7 +35,7 @@ export default function Dashboard() {
             Métricas <span className="text-3xl">👇</span>
           </h2>
           {/* <MetricChart /> */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             <MetricTotalNewslettersChart />
             <MetricTotalUsersChart />
           </div>
@@ -47,11 +46,8 @@ export default function Dashboard() {
           <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
             Campanhas <span className="text-3xl">📢</span>
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <PieMetricChart title="teste" data={[]} />
-            <PieMetricChart title="teste" data={[]} />
-            <PieMetricChart title="teste" data={[]} />
-            <BarMetricChart />
+          <div className="grid md:grid-cols-1 gap-6">
+            <BarUTMCampaign />
           </div>
         </div>
 
