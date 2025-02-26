@@ -21,9 +21,22 @@ export function NavBar() {
     const token = localStorage.getItem("token");
 
     if (!token || !validateToken(token)) {
+      toast.loading("Sessão expirada! ⏳", {
+        duration: 3000,
+        position: "top-right",
+        style: {
+          background: "#1E293B",
+          color: "#F8FAFC",
+          fontSize: "14px",
+          fontWeight: "500",
+          padding: "12px 16px",
+          borderRadius: "8px",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+        },
+      });
       router.push("/");
     }
-  }, [router]);
+  }, [router, token]);
 
   const validateToken = async (token: string) => {
     const response = await fetch("http://localhost:3000/user", {
@@ -68,7 +81,13 @@ export function NavBar() {
   };
 
   return (
-    <header className="fixed border-b border-border top-0 w-full z-10 bg-background/95 py-6 dark:text-white text-black">
+    <header
+      className={`${
+        pathname === "/"
+          ? "hidden"
+          : "fixed border-b border-border top-0 w-full z-10 bg-background/95 py-6 dark:text-white text-black"
+      }`}
+    >
       <nav
         className={`${
           pathname === "/signin" || pathname === "/"
