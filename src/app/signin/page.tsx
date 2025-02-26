@@ -11,7 +11,7 @@ export default function Signin() {
   const [colorMode, setColorMode] = useColorMode();
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
-  const [token, setToken] = useLocalStorage("token", "");
+  const [, setToken] = useLocalStorage("token", "");
   useEffect(() => {
     setMounted(true);
   }, []);

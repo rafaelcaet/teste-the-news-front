@@ -10,7 +10,7 @@ import useLocalStorage from "@/hooks/useLocalStorage";
 const topics = [
   { name: "Dashboard", path: "/dashboard" },
   { name: "Rewards", path: "/reward" },
-  { name: "News letters", path: "/news-letters" },
+  { name: "History", path: "/news-letters-history" },
 ];
 
 export function NavBar() {

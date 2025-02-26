@@ -27,7 +27,7 @@ export default function Header() {
               ☕The News{" "}
               {pathname === "/dashboard"
                 ? "Dashboard"
-                : pathname === "/rewards"
+                : pathname === "/reward"
                 ? "Reward Room"
                 : "history"}
             </span>
