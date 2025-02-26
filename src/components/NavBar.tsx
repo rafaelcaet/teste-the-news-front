@@ -10,6 +10,7 @@ import useLocalStorage from "@/hooks/useLocalStorage";
 const topics = [
   { name: "Dashboard", path: "/dashboard" },
   { name: "Rewards", path: "/reward" },
+  { name: "News letters", path: "/news-letters" },
 ];
 
 export function NavBar() {
@@ -41,7 +42,7 @@ export function NavBar() {
     return topics.map((topic, index) => (
       <Link key={index} href={topic.path} className="relative">
         <span
-          className={`text-base font-semibold cursor-pointer transition-colors ${
+          className={`text-xl font-semibold cursor-pointer transition-colors ${
             pathname === topic.path
               ? "text-theNewsYellow border-b-2 border-theNewsYellow"
               : "hover:text-theNewsYellow"
@@ -68,14 +69,14 @@ export function NavBar() {
           }`}
           className="text-lg font-bold hover:underline"
         >
-          ☕ The News
+          <p className="text-2xl antialiased">☕ The News</p>
         </Link>
 
         <div
           className={`${
             pathname === "/signin" || pathname === "/"
               ? "hidden"
-              : "flex ml-96 gap-10"
+              : "flex ml-80 gap-10"
           }`}
         >
           {renderLinks()}

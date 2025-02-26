@@ -25,7 +25,11 @@ export default function Header() {
           <div className="flex text-5xl">
             <span className="flex font-bold">
               ☕The News{" "}
-              {pathname === "/dashboard" ? "Dashboard" : "Reward Room"}
+              {pathname === "/dashboard"
+                ? "Dashboard"
+                : pathname === "/rewards"
+                ? "Reward Room"
+                : "history"}
             </span>
             <div className="flex ml-6 items-center justify-center mt-3 hover:cursor-pointer text-theNewsYellow rounded-full hover:text-[#e6b700]">
               {colorMode === "light" ? (
