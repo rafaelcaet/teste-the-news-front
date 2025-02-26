@@ -11,6 +11,7 @@ export default function Signin() {
   const [colorMode, setColorMode] = useColorMode();
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [, setToken] = useLocalStorage("token", "");
   useEffect(() => {
     setMounted(true);
@@ -26,7 +27,7 @@ export default function Signin() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ name, email }),
       });
 
       if (response.ok) {
@@ -70,23 +71,38 @@ export default function Signin() {
             </div>
           </CardTitle>
           <CardContent className="flex flex-grow justify-center">
-            <div className="items-center gap-2 w-fit">
-              <span className="font-semibold text-sm ml-1 text-theNewsYellow">
-                Email
-              </span>
-              <div className="flex items-center gap-2">
-                <Input
-                  placeholder="thenewszeiro@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Button
-                  onClick={handleSubmit}
-                  className="h-8 w-8 px-6 bg-theNewsYellow hover:bg-[#e6b700] text-white font-semibold rounded-lg transition-transform hover:scale-105"
-                >
-                  Ok
-                </Button>
+            <div className="items-center justify-center flex flex-col gap-4 w-fit">
+              <div>
+                <span className="font-semibold text-sm ml-1 text-theNewsYellow">
+                  Nome
+                </span>
+                <div className="flex items-center gap-2">
+                  <Input
+                    placeholder="Fulano"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
               </div>
+              <div>
+                <span className="font-semibold text-sm ml-1 text-theNewsYellow">
+                  Email
+                </span>
+                <div className="flex items-center gap-2">
+                  <Input
+                    placeholder="thenewszeiro@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <Button
+                onClick={handleSubmit}
+                className="h-8 w-8 px-6 mt-4 bg-theNewsYellow hover:bg-[#e6b700] text-white font-semibold rounded-lg transition-transform hover:scale-105"
+              >
+                Ok
+              </Button>
             </div>
           </CardContent>
           <div className="font-semibold text-sm text-center justify-center mt-4">

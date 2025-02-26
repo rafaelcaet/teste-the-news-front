@@ -69,7 +69,7 @@ export function NavBar() {
           }`}
           className="text-lg font-bold hover:underline"
         >
-          <p className="text-2xl antialiased">☕ The News</p>
+          <p className="text-4xl font-bold antialiased">☕ The News</p>
         </Link>
 
         <div
