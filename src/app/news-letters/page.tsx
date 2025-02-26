@@ -6,9 +6,11 @@ import { useNewsletter } from "@/hooks/useNewsletter";
 import { extractDateParts } from "@/utils/dateUtils";
 import { ArrowUpRightFromSquare } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function NewsLetter() {
   const { newsletters } = useNewsletter();
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -17,7 +19,9 @@ export default function NewsLetter() {
   if (!mounted) {
     return null;
   }
-
+  const handleRedirectClick = (url: string) => {
+    router.push(url);
+  };
   return (
     <div className="container mx-auto px-4 py-6">
       <Header />
@@ -42,6 +46,9 @@ export default function NewsLetter() {
                     <ArrowUpRightFromSquare
                       className="hover:text-theNewsYellow hover:cursor-pointer transition-all hover:scale-110 opacity-40 hover:opacity-100"
                       size={20}
+                      onClick={() => {
+                        handleRedirectClick(nl.url);
+                      }}
                     />
                   </div>
                 </CardTitle>

@@ -11,6 +11,7 @@ interface INewsletter {
   id: string;
   title: string;
   sentAt: string;
+  url: string;
   utmCampaign: string;
   utmSource: string;
   utmMedium: string;

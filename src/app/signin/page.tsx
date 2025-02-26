@@ -69,22 +69,24 @@ export default function Signin() {
               )}
             </div>
           </CardTitle>
-          <CardContent>
-            <span className="font-semibold text-sm ml-1 text-theNewsYellow">
-              Email
-            </span>
-            <div className="flex items-center gap-2">
-              <Input
-                placeholder="thenewszeiro@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Button
-                onClick={handleSubmit}
-                className="text-[10px] h-6 w-6 bg-theNewsYellow hover:bg-[#e6b700] "
-              >
-                Ok
-              </Button>
+          <CardContent className="flex flex-grow justify-center">
+            <div className="items-center gap-2 w-fit">
+              <span className="font-semibold text-sm ml-1 text-theNewsYellow">
+                Email
+              </span>
+              <div className="flex items-center gap-2">
+                <Input
+                  placeholder="thenewszeiro@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Button
+                  onClick={handleSubmit}
+                  className="h-8 w-8 px-6 bg-theNewsYellow hover:bg-[#e6b700] text-white font-semibold rounded-lg transition-transform hover:scale-105"
+                >
+                  Ok
+                </Button>
+              </div>
             </div>
           </CardContent>
           <div className="font-semibold text-sm text-center justify-center mt-4">
