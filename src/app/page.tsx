@@ -6,7 +6,9 @@ import { Input } from "@/components/ui/input";
 import useColorMode from "@/hooks/useColorMode";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { Moon, Sun } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Home() {
   const [colorMode, setColorMode] = useColorMode();
@@ -14,7 +16,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [token, setToken] = useLocalStorage("token", "");
   const [errorMessage, setErrorMessage] = useState("");
-
+  const router = useRouter();
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -39,7 +41,20 @@ export default function Home() {
       if (response.ok) {
         const data = await response.json();
         setToken(data.access_token);
-        window.location.href = "/reward";
+        toast.success("Login efetuado com sucesso!", {
+          duration: 3000,
+          position: "bottom-right",
+          style: {
+            background: "#1E293B",
+            color: "#F8FAFC",
+            fontSize: "14px",
+            fontWeight: "500",
+            padding: "12px 16px",
+            borderRadius: "8px",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+          },
+        });
+        router.push("/reward");
       } else {
         setErrorMessage("Email ou formato inválido");
       }

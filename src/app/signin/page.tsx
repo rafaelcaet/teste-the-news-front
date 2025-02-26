@@ -5,7 +5,9 @@ import { Input } from "@/components/ui/input";
 import useColorMode from "@/hooks/useColorMode";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { Moon, Sun } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function Signin() {
   const [colorMode, setColorMode] = useColorMode();
@@ -13,6 +15,7 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [, setToken] = useLocalStorage("token", "");
+  const router = useRouter();
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -33,9 +36,14 @@ export default function Signin() {
       if (response.ok) {
         const data = await response.json();
         setToken(data.token);
-        window.location.href = "/reward";
+        toast.success("Login efetuado com sucesso!", { duration: 3000 });
+        router.push("/reward");
       } else {
-        console.error("Erro ao enviar o email:", response.statusText);
+        const errorData = await response.json();
+        console.error(
+          "Erro ao enviar o email:",
+          errorData.message || response.statusText
+        );
       }
     } catch (error) {
       console.error("Erro na requisição:", error);

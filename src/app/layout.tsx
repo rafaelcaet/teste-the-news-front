@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
 import { NewsletterProvider } from "@/contexts/newsletterContext";
@@ -24,6 +25,7 @@ export default function RootLayout({
           <NewsletterProvider>
             <main className={`flex-grow ${inter.className}`}>
               <NavBar />
+              <Toaster />
               {children}
             </main>
           </NewsletterProvider>

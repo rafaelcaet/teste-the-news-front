@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import useLocalStorage from "@/hooks/useLocalStorage";
-
+import toast from "react-hot-toast";
 const topics = [
   { name: "Dashboard", path: "/dashboard" },
   { name: "Rewards", path: "/reward" },
@@ -35,6 +35,19 @@ export function NavBar() {
 
   const handleClearToken = () => {
     setToken("");
+    toast.error("Logout, até mais! 👋", {
+      duration: 3000,
+      position: "top-right",
+      style: {
+        background: "#1E293B",
+        color: "#F8FAFC",
+        fontSize: "14px",
+        fontWeight: "500",
+        padding: "12px 16px",
+        borderRadius: "8px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+      },
+    });
     router.push("/");
   };
 
@@ -55,7 +68,7 @@ export function NavBar() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-10 bg-background/95 py-6 dark:text-white text-black">
+    <header className="fixed border-b border-border top-0 w-full z-10 bg-background/95 py-6 dark:text-white text-black">
       <nav
         className={`${
           pathname === "/signin" || pathname === "/"
