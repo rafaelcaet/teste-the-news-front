@@ -68,7 +68,17 @@ export default function Home() {
     <>
       <div className="grid grid-cols-[46rem_1fr] justify-center items-center min-h-screen">
         <aside className="bg-black w-full h-full text-white text-4xl justify-center flex">
-          <h1 className="mt-44 font-bold">☕ The News</h1>
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="font-bold">☕ The News</h1>
+            <h3 className="text-center mt-10 font-semibold text-lg text-wrap w-[400px]">
+              Somos um jornal para trazer o que você precisa saber para começar
+              seu dia bem e informado. the news{" "}
+              <p className="mt-2">
+                Tudo o que você precisa saber para começar o seu dia bem e
+                informado. se divirta enquanto lê.
+              </p>
+            </h3>
+          </div>
         </aside>
         <div className="flex justify-center items-center">
           <Card className="p-8 sm:p-12 md:p-16 flex flex-col mt-8 shadow-xl rounded-3xl w-full max-w-md transition-all">
