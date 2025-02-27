@@ -30,7 +30,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   const fetchData = useCallback(async () => {
     try {
       const response = await fetch(`http://localhost:3000/user`);
-
       const data = await response.json();
       setUsers(data);
     } catch {
@@ -40,7 +39,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]); // Vai rodar novamente se o token mudar
+  }, [fetchData]);
 
   const contextStates = useMemo(
     () => ({

@@ -5,7 +5,8 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import useColorMode from "@/hooks/useColorMode";
 import useLocalStorage from "@/hooks/useLocalStorage";
-import { Moon, Sun } from "lucide-react";
+import { Instagram, Moon, Sun, Youtube } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -67,21 +68,33 @@ export default function Home() {
   return (
     <>
       <div className="grid grid-cols-[46rem_1fr] justify-center items-center min-h-screen">
-        <aside className="bg-black w-full h-full text-white text-4xl justify-center flex">
+        <aside className="bg-theNewsYellow w-full h-full text-white text-4xl justify-center flex">
           <div className="flex flex-col justify-center items-center">
-            <h1 className="font-bold">☕ The News</h1>
-            <h3 className="text-center mt-10 font-semibold text-lg text-wrap w-[400px]">
-              Somos um jornal para trazer o que você precisa saber para começar
-              seu dia bem e informado. the news{" "}
-              <p className="mt-2">
-                Tudo o que você precisa saber para começar o seu dia bem e
-                informado. se divirta enquanto lê.
+            <h1 className="font-extrabold text-zinc-800">☕ The News</h1>
+            <h3 className="text-center mt-10 font-base text-zinc-800 text-lg text-wrap w-[700px]">
+              Tudo o que você precisa saber para começar o seu dia bem e
+              informado.
+              <p>Se divirta enquanto lê.</p>
+              <p className="font-bold underline mt-4">
+                Siga-nos em nossas redes sociais.
               </p>
             </h3>
+            <div className="flex mt-2 text-zinc-800 gap-5">
+              <Link
+                href={
+                  "https://www.youtube.com/channel/UCHAHidiEnsFjEiAhw3FQ41w"
+                }
+              >
+                <Youtube size={30} className="hover:cursor-pointer" />
+              </Link>
+              <Link href={"https://www.instagram.com/thenews.cc"}>
+                <Instagram size={30} className="hover:cursor-pointer" />
+              </Link>
+            </div>
           </div>
         </aside>
         <div className="flex justify-center items-center">
-          <Card className="p-8 sm:p-12 md:p-16 flex flex-col mt-8 shadow-xl rounded-3xl w-full max-w-md transition-all">
+          <Card className="p-8 sm:p-12 md:p-16 flex flex-col mt-8 shadow-lg rounded-3xl w-full max-w-md transition-all">
             <CardTitle className="flex justify-center font-semibold text-center mb-8 text-3xl text-gray-800 dark:text-gray-100">
               Login
               <div className="flex ml-4 items-center justify-center mt-2 hover:cursor-pointer text-theNewsYellow rounded-full hover:text-[#e6b700] transition-colors">
