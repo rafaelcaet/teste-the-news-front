@@ -3,7 +3,7 @@
 import Header from "@/components/Header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check, Coffee } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
 const dayStreakMessages = [
@@ -70,6 +70,8 @@ type UserType = {
   isAdmin: number;
 };
 
+const arrDays = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
+
 export default function Reward() {
   const [mounted, setMounted] = useState(false);
   const [user, setUser] = useState<UserType>({
@@ -108,13 +110,13 @@ export default function Reward() {
   return (
     <div className="container mx-auto px-4 py-6">
       <Header />
-      <Separator className="my-20" />
+      <Separator className="my-10" />
       <section className="space-y-12">
         <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-theNewsYellow flex items-center gap-2">
             Meu Desempenho <span className="text-3xl">📈</span>
           </h2>
-          <div className="flex p-20 flex-col gap-5 items-center justify-center antialiased">
+          <div className="flex p-10 flex-col gap-5 items-center justify-center antialiased">
             {/* Circulo contendo o daysterak do usuario */}
             <div className="rounded-full bg-theNewsYellow w-52 h-52 flex items-center justify-center">
               <div className="rounded-full dark:bg-black bg-white w-48 h-48 flex items-center justify-center">
@@ -130,12 +132,30 @@ export default function Reward() {
             <div className="text-theNewsYellow font-semibold text-lg">
               <span>{dayStreakMessages[Math.floor(Math.random() * 15)]}</span>
             </div>
+            <div className="flex gap-10">
+              {arrDays.map((day, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center space-y-1"
+                >
+                  <div className="relative w-8 h-8">
+                    <Coffee className="w-full h-full" />
+                    <Check
+                      className={` ${
+                        index < Number(user.dayStreak) ? "" : "hidden"
+                      } absolute -bottom-1 -right-1 text-black bg-theNewsYellow rounded-full p-0.5 shadow-md w-4 h-4`}
+                    />
+                  </div>
+                  <span className="text-sm font-medium">{day}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
       <section className="space-y-12">
         <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-theNewsYellow flex items-center gap-2">
             Prêmios <span className="text-3xl">🏆</span>
           </h2>
           <div className="grid grid-cols-6 gap-6 items-center">

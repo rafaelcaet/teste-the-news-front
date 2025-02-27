@@ -98,9 +98,11 @@ export function NavBar() {
           href={`${
             pathname === "/signin" || pathname === "/" ? "/" : "/reward"
           }`}
-          className="text-lg font-bold hover:underline"
+          className="text-lg font-bold"
         >
-          <p className="text-4xl font-bold antialiased">☕ The News</p>
+          <p className="text-4xl font-bold antialiased">
+            ☕ <span className="hover:underline">The News</span>
+          </p>
         </Link>
 
         <div
