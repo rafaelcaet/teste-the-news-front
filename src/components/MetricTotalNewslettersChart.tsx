@@ -7,7 +7,7 @@ export function MetricTotalNewslettersChart() {
     <>
       <Card className="flex flex-col items-center text-center">
         <CardHeader>
-          <CardTitle className="text-xl text-[#240E0B] dark:text-white">
+          <CardTitle className="text-lg text-[#240E0B] dark:text-white">
             Total de newsletter
           </CardTitle>
         </CardHeader>

@@ -31,7 +31,7 @@ export default function Dashboard() {
       <section className="space-y-12">
         {/* Cliques */}
         <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-theNewsYellow flex items-center gap-2">
             Métricas <span className="text-3xl">👇</span>
           </h2>
           {/* <MetricChart /> */}
@@ -43,7 +43,7 @@ export default function Dashboard() {
 
         {/* Campanhas */}
         <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-theNewsYellow flex items-center gap-2">
             Campanhas <span className="text-3xl">📢</span>
           </h2>
           <div className="grid md:grid-cols-1 gap-6">
@@ -53,7 +53,7 @@ export default function Dashboard() {
 
         {/* Newsletters */}
         <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-theNewsYellow flex items-center gap-2">
             Newsletters <span className="text-3xl">📰</span>
           </h2>
           <div className="grid gap-6">

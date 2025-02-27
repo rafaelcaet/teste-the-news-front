@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { Bar, BarChart, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   ChartConfig,
@@ -70,8 +70,10 @@ export function BarUTMCampaign() {
             data={data}
             layout="vertical"
             margin={{
-              left: 50,
+              left: 60,
+              right: 60,
             }}
+            barSize={50}
           >
             <XAxis type="number" dataKey="value" hide />
             <YAxis
@@ -80,13 +82,20 @@ export function BarUTMCampaign() {
               tickLine={false}
               tickMargin={5}
               axisLine={false}
-              tickFormatter={(value) => value} // Abrevia nome da campanha
+              tickFormatter={(value) => value}
             />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="value" fill="var(--color-desktop)" radius={8} />
+            <Bar
+              dataKey="value"
+              fill="var(--color-desktop)"
+              radius={8}
+              className="text-black dark:text-white"
+            >
+              <LabelList dataKey="value" position="right" fontSize={14} />
+            </Bar>
           </BarChart>
         </ChartContainer>
       </CardContent>

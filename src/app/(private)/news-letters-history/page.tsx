@@ -57,10 +57,10 @@ export default function NewsLettersHistory() {
   return (
     <div className="container mx-auto px-4 py-6">
       <Header />
-      <Separator className="my-20" />
-      <section className="space-y-12">
+      <Separator className="my-10" />
+      <section className="space-y-12 mb-8">
         <div className="space-y-6">
-          <h2 className="text-4xl font-semibold text-theNewsYellow flex items-center gap-2">
+          <h2 className="text-2xl font-semibold text-theNewsYellow flex items-center gap-2">
             Meu histórico <span className="text-3xl font-semibold">📰</span>
           </h2>
           {userNewsLetters.length === 0 && (
